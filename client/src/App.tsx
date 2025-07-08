@@ -33,7 +33,7 @@ function App() {
   return (
     <QueryClientProvider client={queryClient}>
       <TooltipProvider>
-        <div className="bg-faceless-black text-white min-h-screen font-sans">
+        <div className="dark bg-faceless-black text-white min-h-screen font-sans">
           <Toaster />
           <Router />
         </div>

@@ -135,7 +135,7 @@ export default function Profile() {
         <div className="px-6 pb-6">
           {/* Profile Picture */}
           <div className="relative -mt-16 mb-4">
-            <div className="w-24 h-24 rounded-full border-4 border-white overflow-hidden bg-faceless-gray">
+            <div className="w-24 h-24 rounded-full border-4 border-faceless-gray overflow-hidden bg-faceless-gray">
               {user?.profileImageUrl ? (
                 <img 
                   src={user.profileImageUrl} 
@@ -160,19 +160,20 @@ export default function Profile() {
                   value={editForm.username}
                   onChange={(e) => setEditForm(prev => ({ ...prev, username: e.target.value }))}
                   placeholder="Username"
-                  className="bg-faceless-gray border-gray-600 text-white"
+                  className="bg-faceless-gray border-gray-600 text-white placeholder-gray-400"
                 />
                 <Textarea
                   value={editForm.bio}
                   onChange={(e) => setEditForm(prev => ({ ...prev, bio: e.target.value }))}
                   placeholder="Bio"
-                  className="bg-faceless-gray border-gray-600 text-white resize-none"
+                  className="bg-faceless-gray border-gray-600 text-white placeholder-gray-400 resize-none"
                   rows={3}
                 />
                 <div className="flex space-x-2">
                   <Button
                     onClick={handleSave}
-                    className="bg-faceless-accent hover:bg-faceless-accent/90"
+                    className="bg-faceless-accent hover:bg-faceless-accent/90 text-white"
+                    style={{ backgroundColor: 'hsl(348, 100%, 61%)' }}
                     disabled={updateProfileMutation.isPending}
                   >
                     Save
@@ -180,7 +181,7 @@ export default function Profile() {
                   <Button
                     onClick={() => setIsEditing(false)}
                     variant="outline"
-                    className="border-gray-600 text-white"
+                    className="border-gray-600 text-white hover:bg-gray-700"
                   >
                     Cancel
                   </Button>
@@ -188,8 +189,8 @@ export default function Profile() {
               </div>
             ) : (
               <div>
-                <h1 className="text-2xl font-bold">@{user?.username || "Unknown"}</h1>
-                <p className="text-faceless-text">
+                <h1 className="text-2xl font-bold text-white">@{user?.username || "Unknown"}</h1>
+                <p className="text-gray-300 mt-2">
                   {user?.bio || "No bio available"}
                 </p>
               </div>
@@ -209,11 +210,12 @@ export default function Profile() {
             ) : (
               <Button
                 onClick={() => subscribeMutation.mutate()}
-                className={`font-medium ${
+                className={`font-medium text-white ${
                   subscriptionStatus?.isSubscribed
                     ? "bg-gray-600 hover:bg-gray-700"
                     : "bg-faceless-accent hover:bg-faceless-accent/90"
                 }`}
+                style={!subscriptionStatus?.isSubscribed ? { backgroundColor: 'hsl(348, 100%, 61%)' } : {}}
                 disabled={subscribeMutation.isPending}
               >
                 {subscriptionStatus?.isSubscribed ? "Subscribed" : "Subscribe"}

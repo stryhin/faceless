@@ -37,7 +37,8 @@ export default function Landing() {
           
           <Button 
             onClick={() => window.location.href = "/api/login"}
-            className="w-full bg-faceless-accent hover:bg-faceless-accent/90 text-white font-medium py-3"
+            className="w-full bg-faceless-accent hover:bg-faceless-accent/90 text-white font-medium py-3 border-none"
+            style={{ backgroundColor: 'hsl(348, 100%, 61%)' }}
           >
             Get Started
           </Button>
